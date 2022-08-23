@@ -1,0 +1,85 @@
+.header {
+  -webkit-box-shadow: 1px 8px 12px -2px rgba(201, 201, 201, 0.54);
+          box-shadow: 1px 8px 12px -2px rgba(201, 201, 201, 0.54);
+  margin-bottom: 20px;
+}
+.header .header-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+@media (max-width: 380px) {
+  .header .header-container {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+@media (max-width: 700px) {
+  .header .header-container {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .header .header-container .no-decoration {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    margin-bottom: 20px;
+  }
+}
+.header .header-container .no-decoration {
+  text-decoration: none;
+}
+.header .header-container a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #596E0D;
+  font-weight: 700;
+}
+.header .header-container img {
+  width: 50px;
+}
+.header .header-container .hearder-text {
+  margin: 0 20px;
+  font-size: 1.2rem;
+}
+.header .header-container .header-links {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 300px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.header .header-container .bigger-police {
+  font-size: 1.5rem;
+}
+.header .header-container .navLinkStyles {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}/*# sourceMappingURL=Header.css.map */
