@@ -23,6 +23,7 @@ const Header = () => {
               <span className="bigger-police">H</span>EALTH
             </h1>
           </NavLink>
+          <h2 className="header-tm"> HRnet</h2>
           <div className="header-links">
             <NavLink to="/" style={navLinkStyles}>
               Create Employee
