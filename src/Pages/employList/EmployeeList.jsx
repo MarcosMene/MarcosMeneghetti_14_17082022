@@ -1,7 +1,12 @@
 import React from "react";
+import BasicTable from "../../components/TableGroup/BasicTable";
 
 const EmployeeList = () => {
-  return <div>EmployeeList</div>;
+  return (
+    <main className="container center">
+      <BasicTable />
+    </main>
+  );
 };
 
 export default EmployeeList;

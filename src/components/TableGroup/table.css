@@ -1,0 +1,212 @@
+.container.searches {
+  max-width: 1200px;
+  margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-flow: column;
+  flex-flow: column;
+  padding: 0 20px;
+}
+
+.table-group {
+  width: 100%;
+}
+
+@media (max-width: 990px) {
+  .table-group {
+    overflow-y: auto;
+    overflow-x: scroll;
+    scrollbar-color: #596E0D #fff;
+    scrollbar-width: auto;
+  }
+
+  .table-group::-webkit-scrollbar {
+    height: 10px;
+    background: rgb(138, 201, 138);
+  }
+
+  .table-group::-webkit-scrollbar-track {
+    background: white;
+  }
+
+  .table-group::-webkit-scrollbar-thumb {
+    background: #596E0D;
+    border-radius: 30px;
+  }
+}
+
+.search-and-pagination {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+
+@media (max-width: 990px) {
+  .search-and-pagination {
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+
+  .search-and-pagination .search {
+    margin: 0px 0 20px;
+  }
+}
+
+.search-and-pagination .search select {
+  margin-left: 10px;
+  background-color: #FBF9F4;
+  border: 1px solid #57571c;
+  color: black;
+  cursor: pointer;
+  border-radius: 3px;
+  padding: 8px 0px 8px 5px;
+}
+
+.search-and-pagination .search input {
+  line-height: 1.8rem;
+}
+
+.search-and-pagination .pagination {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
+}
+
+@media (max-width: 990px) {
+  .search-and-pagination .pagination {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+
+  .search-and-pagination .pagination .pagination-page {
+    margin-bottom: 10px;
+  }
+
+  .search-and-pagination .pagination span {
+    margin: 20px;
+  }
+
+  .search-and-pagination .pagination .buttons {
+    margin-left: 0px;
+  }
+
+  .search-and-pagination .pagination .buttons button {
+    margin-left: 0px;
+  }
+}
+
+.search-and-pagination .pagination input {
+  margin-left: 10px;
+  background-color: #FBF9F4;
+  border: 1px solid #57571c;
+  color: black;
+  cursor: pointer;
+  border-radius: 3px;
+  padding: 8px 0px 8px 5px;
+}
+
+.search-and-pagination .pagination span {
+  margin: 10px;
+}
+
+.search-and-pagination .pagination .buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  width: 250px;
+}
+
+.search-and-pagination .pagination .buttons button {
+  background-color: #FBF9F4;
+  border: 1px solid #57571c;
+  color: black;
+  cursor: pointer;
+  border-radius: 3px;
+  padding: 8px 12px;
+}
+
+.search-and-pagination .pagination .buttons button:disabled,
+.search-and-pagination .pagination .buttons button[disabled] {
+  background-color: transparent;
+  cursor: auto;
+  color: rgb(163, 163, 163);
+  border: 1px solid #d5d58e;
+}
+
+table {
+  font-family: "Roboto", sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table td,
+table th {
+  border: 1px solid #92AC20;
+  padding: 12px 5px;
+  font-size: 0.9rem;
+  text-align: center;
+  line-height: 1.2rem;
+}
+
+table tr:nth-child(even) {
+  background-color: rgb(239, 239, 239);
+}
+
+table tr:hover {
+  background-color: rgba(245, 245, 220, 0.5058823529);
+}
+
+table th,
+tfoot td {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #F5F5DC;
+  color: #596E0D;
+  font-weight: bold;
+}
+
+span svg {
+  margin-left: 10px;
+  fill: #718231;
+  font-size: 0.7rem;
+}
+
+/*# sourceMappingURL=table.css.map */
