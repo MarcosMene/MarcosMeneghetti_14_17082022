@@ -57,7 +57,7 @@ const BasicTable = () => {
   const { globalFilter } = state;
 
   return (
-    <div className="container searches">
+    <div className="searches">
       <div className="search-and-pagination">
         <div className="search">
           <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />

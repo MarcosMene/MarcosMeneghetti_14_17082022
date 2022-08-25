@@ -1,4 +1,4 @@
-.container.searches {
+.searches {
   max-width: 1200px;
   margin: auto;
   display: -webkit-box;
@@ -14,7 +14,7 @@
   -webkit-box-direction: normal;
       -ms-flex-flow: column;
           flex-flow: column;
-  padding: 0 20px;
+  width: 100%;
 }
 
 .table-group {
@@ -53,7 +53,7 @@
           justify-content: space-between;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  margin: 20px 0;
+  margin-bottom: 20px;
 }
 @media (max-width: 990px) {
   .search-and-pagination {
