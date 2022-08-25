@@ -85,6 +85,7 @@ const BasicTable = () => {
               Go to page:{" "}
               <input
                 type="number"
+                min="1"
                 defaultValue={pageIndex + 1}
                 onChange={(e) => {
                   const pageNumber = e.target.value
