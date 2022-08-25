@@ -65,7 +65,7 @@ const BasicTable = () => {
             value={pageSize}
             onChange={(e) => setPageSize(Number(e.target.value))}
           >
-            {[5, 10, 15, 50, 100].map((pageSize) => (
+            {[10, 25, 50, 100].map((pageSize) => (
               <option key={pageSize} value={pageSize}>
                 Show {pageSize}
               </option>
@@ -129,12 +129,12 @@ const BasicTable = () => {
                     <span>
                       {column.isSorted ? (
                         column.isSortedDesc ? (
-                          <ImArrowDown />
-                        ) : (
                           <ImArrowUp />
+                        ) : (
+                          <ImArrowDown />
                         )
                       ) : (
-                        <ImArrowDown />
+                        ""
                       )}
                     </span>
                   </th>
