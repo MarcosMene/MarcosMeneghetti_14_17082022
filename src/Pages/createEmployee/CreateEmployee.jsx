@@ -1,6 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
 import "./CreateEmployee.css";
 import { Modal } from "modal_mm";
+import Select from "react-select";
+import { states } from "../../mocks_data/states";
 import { BiInfoCircle } from "react-icons/bi";
 import { FaTimes } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
@@ -22,16 +24,38 @@ const CreateEmployee = () => {
   const [formErrors, setFormErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
 
-  //modal employee created
   //modal
   const [showModal, setShowModal] = useState(false);
+  // console.log(formValues);
   const openModal = () => {
     setShowModal((prev) => !prev);
   };
 
+  // React state to manage selected options departament
+  const [selectedOptions, setSelectedOptions] = useState();
+  // React state to manage selected options country state
+  const [selectedOptionsState, setSelectedOptionsState] = useState();
+
+  // Function triggered on selection country state
+  function handleSelectState(data) {
+    setSelectedOptionsState(data);
+    setFormValues({ ...formValues, [data.name]: data.value });
+    formErrors.countrystate = "";
+  }
+
+  // Function triggered on selection departament
+  function handleSelect(data) {
+    setSelectedOptions(data);
+    setFormValues({ ...formValues, [data.name]: data.value });
+    formErrors.departament = "";
+  }
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormValues({ ...formValues, [name]: value });
+
+    //hide error message from the input that is changing
+    formErrors[e.target.name] = "";
   };
 
   const handleSubmit = (e) => {
@@ -43,8 +67,13 @@ const CreateEmployee = () => {
   useEffect(() => {
     if (Object.keys(formErrors).length === 0 && isSubmit) {
       openModal();
+
+      //reset all values of form
+      setFormValues(initialValues);
+      setSelectedOptionsState(null);
+      setSelectedOptions(null);
     }
-  }, [formErrors, isSubmit]);
+  }, [formErrors]);
 
   const validate = (values) => {
     const errors = {};
@@ -81,6 +110,24 @@ const CreateEmployee = () => {
     return errors;
   };
 
+  //color style selection dropdown
+
+  const colorStyles = {
+    control: (styles) => ({ ...styles, marginBottom: 20 }),
+  };
+
+  const optionListDepartament = [
+    { value: "sales", label: "Sales", name: "departament" },
+    { value: "marketing", label: "Marketing", name: "departament" },
+    { value: "engeneering", label: "Engeneering", name: "departament" },
+    {
+      value: "humanresources",
+      label: "Humanresources",
+      name: "departament",
+    },
+    { value: "legal", label: "Legal", name: "departament" },
+  ];
+
   return (
     <main className="container center">
       {Object.keys(formErrors).length === 0 && isSubmit && (
@@ -105,103 +152,100 @@ const CreateEmployee = () => {
             <fieldset className="form-fieldset title">
               <legend>Employee identity</legend>
               <label>First Name</label>
-              <span>{formErrors.firstname}</span>
+              <p className="errorMessage">{formErrors.firstname}</p>
               <input
                 autoComplete="off"
                 name="firstname"
                 type="text"
-                defaultValue={formValues.firstname}
+                value={formValues.firstname}
                 onChange={handleChange}
               />
 
               <label>Last Name</label>
-              <span>{formErrors.lastname}</span>
+              <p className="errorMessage">{formErrors.lastname}</p>
               <input
                 autoComplete="off"
                 name="lastname"
                 type="text"
-                defaultValue={formValues.lastname}
+                value={formValues.lastname}
                 onChange={handleChange}
               />
 
               <label>Date of Birth</label>
-              <p>{formErrors.datebirth}</p>
+              <p className="errorMessage">{formErrors.datebirth}</p>
               <input
                 autoComplete="off"
                 name="datebirth"
                 type="date"
-                defaultValue={formValues.datebirth}
+                value={formValues.datebirth}
                 onChange={handleChange}
               />
 
               <label>Start Date</label>
-              <p>{formErrors.startdate}</p>
+              <p className="errorMessage">{formErrors.startdate}</p>
               <input
                 autoComplete="off"
                 name="startdate"
                 type="date"
-                defaultValue={formValues.startdate}
+                value={formValues.startdate}
                 onChange={handleChange}
               />
             </fieldset>
             <fieldset className="form-fieldset title">
               <legend>Employee Address</legend>
               <label>Street</label>
-              <p>{formErrors.street}</p>
+              <p className="errorMessage">{formErrors.street}</p>
               <input
                 autoComplete="off"
                 name="street"
                 type="text"
-                defaultValue={formValues.street}
+                value={formValues.street}
                 onChange={handleChange}
               />
 
               <label>City</label>
-              <p>{formErrors.city}</p>
+              <p className="errorMessage">{formErrors.city}</p>
               <input
                 autoComplete="off"
                 name="city"
                 type="text"
-                defaultValue={formValues.city}
+                value={formValues.city}
                 onChange={handleChange}
               />
 
               <label>State</label>
-              <p>{formErrors.countrystate}</p>
-              <select
+              <p className="errorMessage">{formErrors.countrystate}</p>
+
+              <Select
+                styles={colorStyles}
                 name="countrystate"
-                defaultValue={formValues.countrystate}
-                onChange={handleChange}
-              >
-                <option value="alabama">Alabama</option>
-                <option value="texas">Texas</option>
-                <option value="florida">Florida</option>
-                <option value="alaska">Alaska</option>
-              </select>
+                options={states}
+                placeholder="Select state"
+                value={selectedOptionsState}
+                onChange={handleSelectState}
+              />
 
               <label>Zip Code</label>
-              <p>{formErrors.zipcode}</p>
+              <p className="errorMessage">{formErrors.zipcode}</p>
               <input
                 autoComplete="off"
                 name="zipcode"
                 type="text"
-                defaultValue={formValues.zipcode}
+                value={formValues.zipcode}
                 onChange={handleChange}
               />
-
+            </fieldset>
+            <fieldset className="form-fieldset title">
+              <legend>Departament</legend>
               <label>Departament</label>
-              <p>{formErrors.departament}</p>
-              <select
+              <p className="errorMessage">{formErrors.departament}</p>
+              <Select
                 name="departament"
-                defaultValue={formValues.departament}
-                onChange={handleChange}
-              >
-                <option value="sales">Sales</option>
-                <option value="marketing">Marketing</option>
-                <option value="engineering">Engineering</option>
-                <option value="human-resources">Human Resources</option>
-                <option value="legal">Legal</option>
-              </select>
+                options={optionListDepartament}
+                placeholder="Select departament"
+                value={selectedOptions}
+                onChange={handleSelect}
+              />
             </fieldset>
           </div>
 

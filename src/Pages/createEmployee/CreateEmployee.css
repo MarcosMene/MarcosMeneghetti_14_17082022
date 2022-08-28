@@ -104,6 +104,12 @@
   font-weight: 600;
   font-size: 1rem;
 }
+.form-wrapper .form-inputs .form-fieldset p {
+  display: inline-block;
+  color: red;
+  font-size: 0.7rem;
+  font-weight: bold;
+}
 .form-wrapper .form-inputs label {
   color: #596E0D;
   font-weight: 500;
