@@ -8,6 +8,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { Modal } from "modal_mm";
 import Select from "react-select";
 import { states } from "../../mocks_data/states";
+import { optionListDepartament } from "../../mocks_data/departament";
 
 const CreateEmployee = () => {
   const initialValues = {
@@ -27,61 +28,37 @@ const CreateEmployee = () => {
 
   //modal
   const [showModal, setShowModal] = useState(false);
-  // console.log(formValues);
   const openModal = () => {
     setShowModal((prev) => !prev);
   };
 
-  // React state to manage selected options departament
-  const [selectedOptions, setSelectedOptions] = useState();
   // React state to manage selected options country state
   const [selectedOptionsState, setSelectedOptionsState] = useState();
 
   //birth date
   const [selectedDate, setSelectedDate] = useState(
-    moment().subtract(18, "years")._d
+    // moment().subtract(18, "years")._d
+    null
   );
   //start work date
-  const [selectedDateStart, setSelectedDateStart] = useState(new Date());
-  // const [ageUserBad, setAgeUserBad] = useState(false);
-  // const [ageMessage, setAgeMessage] = useState("");
+  const [selectedDateStart, setSelectedDateStart] = useState(
+    // new Date()
+    null
+  );
+
+  // React state to manage selected options departament
+  const [selectedOptions, setSelectedOptions] = useState();
 
   const ageDate = (data) => {
     setSelectedDate(data);
-
     const dateValue = moment(data).format("YYYY/MM/DD");
 
     setFormValues({
       ...formValues,
-
       [(formValues.datebirth = "datebirth")]: (formValues.datebirth =
         dateValue),
     });
-
-    console.log(formValues);
-    // setFormValues({
-    //   ...formValues,
-    //   [formValues]: data.value,
-    // });
-    //
-
     formErrors.datebirth = "";
-
-    // const today = new Date();
-    // const birthDate = new Date(data);
-    // const age = today.getFullYear() - birthDate.getFullYear();
-
-    // if (age < 18) {
-    //   setAgeMessage("you must be 18 or older to work here");
-    //   setSelectedDate(null);
-    //   setAgeUserBad(true);
-    // } else if (age > 65) {
-    //   setAgeMessage("you are too olde");
-    //   setSelectedDate(null);
-    //   setAgeUserBad(true);
-    // } else {
-    //   setAgeMessage("your good");
-    // }
   };
 
   const startDate = (data) => {
@@ -96,30 +73,7 @@ const CreateEmployee = () => {
         dateValueStart),
     });
 
-    console.log(formValues);
-    // setFormValues({
-    //   ...formValues,
-    //   [formValues]: data.value,
-    // });
-    //
-
-    formErrors.datebirth = "";
-
-    // const today = new Date();
-    // const birthDate = new Date(data);
-    // const age = today.getFullYear() - birthDate.getFullYear();
-
-    // if (age < 18) {
-    //   setAgeMessage("you must be 18 or older to work here");
-    //   setSelectedDate(null);
-    //   setAgeUserBad(true);
-    // } else if (age > 65) {
-    //   setAgeMessage("you are too olde");
-    //   setSelectedDate(null);
-    //   setAgeUserBad(true);
-    // } else {
-    //   setAgeMessage("your good");
-    // }
+    formErrors.startdate = "";
   };
 
   // Function triggered on selection country state
@@ -138,7 +92,6 @@ const CreateEmployee = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    console.log(e.target);
     setFormValues({ ...formValues, [name]: value });
 
     //hide error message from the input that is changing
@@ -159,64 +112,85 @@ const CreateEmployee = () => {
       setFormValues(initialValues);
       setSelectedOptionsState(null);
       setSelectedOptions(null);
-      setSelectedDate(moment().subtract(18, "years")._d);
-      setSelectedDateStart(new Date());
+      setSelectedDate(null);
+      setSelectedDateStart(null);
     }
   }, [formErrors]);
 
   const validate = (values) => {
-    console.log(values);
     const errors = {};
+    //first name
     if (!values.firstname) {
-      errors.firstname = "first name is required";
+      errors.firstname = "First name is required";
     } else if (values.firstname.length < 3) {
-      errors.firstname = "first name must be more than 3 characters";
-    }
-    if (!values.lastname) {
-      errors.lastname = "last name is required";
-    }
-    if (!values.datebirth) {
-      errors.datebirth = "date of birth is required";
-    }
-    if (!values.startdate) {
-      errors.startdate = "start date is required";
-    }
-    if (!values.street) {
-      errors.street = "street is required";
-    }
-    if (!values.city) {
-      errors.city = "city is required";
-    }
-    if (!values.countrystate) {
-      errors.countrystate = "state is required";
+      errors.firstname = "First name must be more than 3 characters";
+    } else if (values.firstname.length > 30) {
+      errors.firstname = "First name must be less than 30 characters";
     }
 
-    if (!values.zipcode) {
-      errors.zipcode = "zipcode is required";
+    //last name
+    if (!values.lastname) {
+      errors.lastname = "Last name is required";
+    } else if (values.lastname.length < 3) {
+      errors.lastname = "Last name must be more than 3 characters";
+    } else if (values.lastname.length > 30) {
+      errors.lastname = "Last name must be less than 30 characters";
     }
+
+    //date birth
+    if (!values.datebirth) {
+      errors.datebirth =
+        "Date of birth is required. You must be 18-60 years old.";
+    }
+
+    //date start date
+    if (!values.startdate) {
+      errors.startdate = "Start date is required";
+    }
+
+    //street
+    if (!values.street) {
+      errors.street = "Street is required";
+    } else if (values.street.length < 10) {
+      errors.street = "Street must be more than 10 characters";
+    } else if (values.street.length > 40) {
+      errors.street = "Street must be less than 40 characters";
+    }
+
+    //city
+    if (!values.city) {
+      errors.city = "City is required";
+    } else if (values.city.length < 5) {
+      errors.city = "City must be more than 10 characters";
+    } else if (values.city.length > 40) {
+      errors.city = "City must be less than 40 characters";
+    }
+
+    //country's state
+    if (!values.countrystate) {
+      errors.countrystate = "State is required";
+    }
+
+    //zipcode
+    if (!values.zipcode) {
+      errors.zipcode = "Zipcode is required";
+    } else if (values.zipcode.length < 5) {
+      errors.zipcode = "Zipcode must be more than 4 characters";
+    } else if (values.zipcode.length > 20) {
+      errors.zipcode = "Zipcode must be less than 20 characters";
+    }
+
+    //departament
     if (!values.departament) {
-      errors.departament = "departament is required";
+      errors.departament = "Departament is required";
     }
     return errors;
   };
 
   //color style selection dropdown
-
   const colorStyles = {
     control: (styles) => ({ ...styles, marginBottom: 20 }),
   };
-
-  const optionListDepartament = [
-    { value: "sales", label: "Sales", name: "departament" },
-    { value: "marketing", label: "Marketing", name: "departament" },
-    { value: "engeneering", label: "Engeneering", name: "departament" },
-    {
-      value: "humanresources",
-      label: "Humanresources",
-      name: "departament",
-    },
-    { value: "legal", label: "Legal", name: "departament" },
-  ];
 
   return (
     <main className="container center">
@@ -232,6 +206,7 @@ const CreateEmployee = () => {
           content="Employee created!"
           contentcolor="black"
           shadowModal="0 5px 12px rgba(18, 39, 3, .5)"
+          fontSizeModal="1.5rem"
           //your custom parameters
         />
       )}
@@ -263,58 +238,39 @@ const CreateEmployee = () => {
 
               <label>Date of Birth</label>
               <p className="errorMessage">{formErrors.datebirth}</p>
-              {/* <input
-                autoComplete="off"
-                name="datebirth"
-                type="date"
-                value={formValues.datebirth}
-                onChange={handleChange}
-              /> */}
               <DatePicker
                 name="datebirth"
                 value={selectedDate}
                 onChange={ageDate}
                 selected={selectedDate}
-                placeholderText={"yyyy/MM/dd"}
+                placeholderText={"yyyy/mm/dd"}
                 yearDropdownItemNumber={60}
                 minDate={moment().subtract(60, "years")._d}
                 maxDate={moment().subtract(18, "years")._d}
                 scrollableYearDropdown
                 dateFormat="yyyy/MM/dd"
-                // filterDate={(date) => date.getDay() !== 6 && date.getDay() !== 0}
                 peekNextMonth
                 showMonthDropdown
                 showYearDropdown
                 dropdownMode="select"
-                // todayButton="today"
               />
 
               <label>Start Date</label>
               <p className="errorMessage">{formErrors.startdate}</p>
-              {/* <input
-                autoComplete="off"
-                name="startdate"
-                type="date"
-                value={formValues.startdate}
-                onChange={handleChange}
-              /> */}
               <DatePicker
                 name="startdate"
-                value={moment(selectedDateStart).format("YYYY/MM/DD")}
+                value={selectedDateStart}
                 onChange={startDate}
                 selected={selectedDateStart}
-                placeholderText={"yyyy/MM/dd"}
-                // yearDropdownItemNumber={1}
+                placeholderText={"yyyy/mm/dd"}
                 minDate={new Date()}
-                maxDate={moment().add(5, "weeks")._d}
-                // scrollableYearDropdown
+                maxDate={moment().add(10, "weeks")._d}
                 dateFormat="yyyy/MM/dd"
                 filterDate={(date) =>
                   date.getDay() !== 6 && date.getDay() !== 0
                 }
                 peekNextMonth
                 showMonthDropdown
-                // showYearDropdown
                 dropdownMode="select"
                 todayButton="today"
               />
