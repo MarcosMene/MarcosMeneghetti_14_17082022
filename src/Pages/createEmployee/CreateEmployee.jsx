@@ -1,12 +1,13 @@
-import React, { useState, useRef, useEffect } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useState, useEffect } from "react";
+import DatePicker from "react-datepicker";
+import moment from "moment";
 import "./CreateEmployee.css";
+import "../../../src/App.css";
+import "react-datepicker/dist/react-datepicker.css";
 import { Modal } from "modal_mm";
 import Select from "react-select";
 import { states } from "../../mocks_data/states";
-import { BiInfoCircle } from "react-icons/bi";
-import { FaTimes } from "react-icons/fa";
-import { useSelector, useDispatch } from "react-redux";
-import Spinner from "../../components/Spinner/Spinner";
 
 const CreateEmployee = () => {
   const initialValues = {
@@ -36,6 +37,91 @@ const CreateEmployee = () => {
   // React state to manage selected options country state
   const [selectedOptionsState, setSelectedOptionsState] = useState();
 
+  //birth date
+  const [selectedDate, setSelectedDate] = useState(
+    moment().subtract(18, "years")._d
+  );
+  //start work date
+  const [selectedDateStart, setSelectedDateStart] = useState(new Date());
+  // const [ageUserBad, setAgeUserBad] = useState(false);
+  // const [ageMessage, setAgeMessage] = useState("");
+
+  const ageDate = (data) => {
+    setSelectedDate(data);
+
+    const dateValue = moment(data).format("YYYY/MM/DD");
+
+    setFormValues({
+      ...formValues,
+
+      [(formValues.datebirth = "datebirth")]: (formValues.datebirth =
+        dateValue),
+    });
+
+    console.log(formValues);
+    // setFormValues({
+    //   ...formValues,
+    //   [formValues]: data.value,
+    // });
+    //
+
+    formErrors.datebirth = "";
+
+    // const today = new Date();
+    // const birthDate = new Date(data);
+    // const age = today.getFullYear() - birthDate.getFullYear();
+
+    // if (age < 18) {
+    //   setAgeMessage("you must be 18 or older to work here");
+    //   setSelectedDate(null);
+    //   setAgeUserBad(true);
+    // } else if (age > 65) {
+    //   setAgeMessage("you are too olde");
+    //   setSelectedDate(null);
+    //   setAgeUserBad(true);
+    // } else {
+    //   setAgeMessage("your good");
+    // }
+  };
+
+  const startDate = (data) => {
+    setSelectedDateStart(data);
+
+    const dateValueStart = moment(data).format("YYYY/MM/DD");
+
+    setFormValues({
+      ...formValues,
+
+      [(formValues.startdate = "startdate")]: (formValues.startdate =
+        dateValueStart),
+    });
+
+    console.log(formValues);
+    // setFormValues({
+    //   ...formValues,
+    //   [formValues]: data.value,
+    // });
+    //
+
+    formErrors.datebirth = "";
+
+    // const today = new Date();
+    // const birthDate = new Date(data);
+    // const age = today.getFullYear() - birthDate.getFullYear();
+
+    // if (age < 18) {
+    //   setAgeMessage("you must be 18 or older to work here");
+    //   setSelectedDate(null);
+    //   setAgeUserBad(true);
+    // } else if (age > 65) {
+    //   setAgeMessage("you are too olde");
+    //   setSelectedDate(null);
+    //   setAgeUserBad(true);
+    // } else {
+    //   setAgeMessage("your good");
+    // }
+  };
+
   // Function triggered on selection country state
   function handleSelectState(data) {
     setSelectedOptionsState(data);
@@ -52,6 +138,7 @@ const CreateEmployee = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    console.log(e.target);
     setFormValues({ ...formValues, [name]: value });
 
     //hide error message from the input that is changing
@@ -72,10 +159,13 @@ const CreateEmployee = () => {
       setFormValues(initialValues);
       setSelectedOptionsState(null);
       setSelectedOptions(null);
+      setSelectedDate(moment().subtract(18, "years")._d);
+      setSelectedDateStart(new Date());
     }
   }, [formErrors]);
 
   const validate = (values) => {
+    console.log(values);
     const errors = {};
     if (!values.firstname) {
       errors.firstname = "first name is required";
@@ -173,22 +263,60 @@ const CreateEmployee = () => {
 
               <label>Date of Birth</label>
               <p className="errorMessage">{formErrors.datebirth}</p>
-              <input
+              {/* <input
                 autoComplete="off"
                 name="datebirth"
                 type="date"
                 value={formValues.datebirth}
                 onChange={handleChange}
+              /> */}
+              <DatePicker
+                name="datebirth"
+                value={selectedDate}
+                onChange={ageDate}
+                selected={selectedDate}
+                placeholderText={"yyyy/MM/dd"}
+                yearDropdownItemNumber={60}
+                minDate={moment().subtract(60, "years")._d}
+                maxDate={moment().subtract(18, "years")._d}
+                scrollableYearDropdown
+                dateFormat="yyyy/MM/dd"
+                // filterDate={(date) => date.getDay() !== 6 && date.getDay() !== 0}
+                peekNextMonth
+                showMonthDropdown
+                showYearDropdown
+                dropdownMode="select"
+                // todayButton="today"
               />
 
               <label>Start Date</label>
               <p className="errorMessage">{formErrors.startdate}</p>
-              <input
+              {/* <input
                 autoComplete="off"
                 name="startdate"
                 type="date"
                 value={formValues.startdate}
                 onChange={handleChange}
+              /> */}
+              <DatePicker
+                name="startdate"
+                value={moment(selectedDateStart).format("YYYY/MM/DD")}
+                onChange={startDate}
+                selected={selectedDateStart}
+                placeholderText={"yyyy/MM/dd"}
+                // yearDropdownItemNumber={1}
+                minDate={new Date()}
+                maxDate={moment().add(5, "weeks")._d}
+                // scrollableYearDropdown
+                dateFormat="yyyy/MM/dd"
+                filterDate={(date) =>
+                  date.getDay() !== 6 && date.getDay() !== 0
+                }
+                peekNextMonth
+                showMonthDropdown
+                // showYearDropdown
+                dropdownMode="select"
+                todayButton="today"
               />
             </fieldset>
             <fieldset className="form-fieldset title">
