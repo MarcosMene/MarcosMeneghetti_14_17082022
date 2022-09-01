@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/static/css/main.393f4222.css",
-    "main.js": "/static/js/main.f27f779b.js",
-    "static/media/lost.jpg": "/static/media/lost.41820d980e1c82708292.jpg",
-    "static/media/logo.png": "/static/media/logo.4b888de6e648691ffbca.png",
-    "index.html": "/index.html",
-    "main.393f4222.css.map": "/static/css/main.393f4222.css.map",
-    "main.f27f779b.js.map": "/static/js/main.f27f779b.js.map"
+    "main.css": "/MarcosMeneghetti_14_17082022/static/css/main.558ef198.css",
+    "main.js": "/MarcosMeneghetti_14_17082022/static/js/main.55b78b61.js",
+    "static/media/lost.jpg": "/MarcosMeneghetti_14_17082022/static/media/lost.41820d980e1c82708292.jpg",
+    "static/media/logo.png": "/MarcosMeneghetti_14_17082022/static/media/logo.4b888de6e648691ffbca.png",
+    "index.html": "/MarcosMeneghetti_14_17082022/index.html",
+    "main.558ef198.css.map": "/MarcosMeneghetti_14_17082022/static/css/main.558ef198.css.map",
+    "main.55b78b61.js.map": "/MarcosMeneghetti_14_17082022/static/js/main.55b78b61.js.map"
   },
   "entrypoints": [
-    "static/css/main.393f4222.css",
-    "static/js/main.f27f779b.js"
+    "static/css/main.558ef198.css",
+    "static/js/main.55b78b61.js"
   ]
 }
