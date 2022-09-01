@@ -1,4 +1,5 @@
 {
+  "homepage": "https://marcosmene.github.io/MarcosMeneghetti_14_17082022",
   "name": "weath_health",
   "version": "0.1.0",
   "private": true,
@@ -25,7 +26,6 @@
     "styled-components": "^5.3.5",
     "web-vitals": "^2.1.4"
   },
-
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
