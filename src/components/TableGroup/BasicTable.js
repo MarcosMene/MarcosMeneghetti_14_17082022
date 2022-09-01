@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import { useMemo } from "react";
 import {
   useTable,
   useGlobalFilter,
@@ -10,7 +10,6 @@ import MOCK_DATA from "./MOCK_DATA.json";
 import { COLUMNS } from "./columns";
 import "./table.css";
 import { GlobalFilter } from "./GlobalFilter";
-import { ColumnFilter } from "./ColumnFilter";
 import { ImArrowUp, ImArrowDown } from "react-icons/im";
 
 const BasicTable = () => {
@@ -19,7 +18,7 @@ const BasicTable = () => {
 
   const defaultColumn = useMemo(() => {
     return {
-      Filter: ColumnFilter,
+      Filter: GlobalFilter,
     };
   }, []);
 
@@ -176,5 +175,4 @@ const BasicTable = () => {
     </div>
   );
 };
-
 export default BasicTable;

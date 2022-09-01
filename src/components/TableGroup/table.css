@@ -91,6 +91,7 @@
 }
 .search-and-pagination .search input {
   line-height: 1.9rem;
+  padding: 0 10px;
 }
 .search-and-pagination .pagination {
   display: -webkit-box;

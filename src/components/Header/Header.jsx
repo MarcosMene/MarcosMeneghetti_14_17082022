@@ -1,8 +1,5 @@
-import React from "react";
 import { NavLink } from "react-router-dom";
-// import styled from "styled-components";
 import "./Header.css";
-
 import logo from "../../assets/image/logo.png";
 
 const Header = () => {
