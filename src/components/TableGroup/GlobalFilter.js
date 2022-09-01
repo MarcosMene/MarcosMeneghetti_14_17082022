@@ -10,8 +10,10 @@ export const GlobalFilter = ({ filter, setFilter }) => {
 
   return (
     <span>
-      Search:{" "}
+      <label htmlFor="search">Search: </label>
+
       <input
+        id="search"
         value={value || ""}
         onChange={(e) => {
           setValue(e.target.value);

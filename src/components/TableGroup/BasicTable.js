@@ -82,8 +82,9 @@ const BasicTable = () => {
             </span>
 
             <span>
-              Go to page:{" "}
+              <label htmlFor="goto">Go to page: </label>
               <input
+                id="goto"
                 type="number"
                 min="1"
                 defaultValue={pageIndex + 1}

@@ -188,9 +188,9 @@ const CreateEmployee = () => {
   };
 
   //color style selection dropdown
-  const colorStyles = {
-    control: (styles) => ({ ...styles, marginBottom: 20 }),
-  };
+  // const colorStyles = {
+  //   control: (styles) => ({ ...styles }),
+  // };
 
   return (
     <main className="container center">
@@ -214,31 +214,34 @@ const CreateEmployee = () => {
       <div className="form-wrapper">
         <form className="form-inputs" onSubmit={handleSubmit}>
           <div className="form-fieldsets">
-            <fieldset className="form-fieldset title">
+            <fieldset className="form-fieldset">
               <legend>Employee identity</legend>
-              <label>First Name</label>
-              <p className="errorMessage">{formErrors.firstname}</p>
+
+              <label htmlFor="firstname">First Name </label>
               <input
+                id="firstname"
                 autoComplete="off"
                 name="firstname"
                 type="text"
                 value={formValues.firstname}
                 onChange={handleChange}
               />
+              <span className="errorMessage">{formErrors.firstname}</span>
 
-              <label>Last Name</label>
-              <p className="errorMessage">{formErrors.lastname}</p>
+              <label htmlFor="lastname">Last Name</label>
               <input
+                id="lastname"
                 autoComplete="off"
                 name="lastname"
                 type="text"
                 value={formValues.lastname}
                 onChange={handleChange}
               />
+              <span className="errorMessage">{formErrors.lastname}</span>
 
-              <label>Date of Birth</label>
-              <p className="errorMessage">{formErrors.datebirth}</p>
+              <label htmlFor="datebirth">Date of Birth</label>
               <DatePicker
+                id="datebirth"
                 name="datebirth"
                 value={selectedDate}
                 onChange={ageDate}
@@ -254,10 +257,10 @@ const CreateEmployee = () => {
                 showYearDropdown
                 dropdownMode="select"
               />
-
-              <label>Start Date</label>
-              <p className="errorMessage">{formErrors.startdate}</p>
+              <span className="errorMessage">{formErrors.datebirth}</span>
+              <label htmlFor="startdate">Start Date </label>
               <DatePicker
+                id="startdate"
                 name="startdate"
                 value={selectedDateStart}
                 onChange={startDate}
@@ -274,62 +277,74 @@ const CreateEmployee = () => {
                 dropdownMode="select"
                 todayButton="today"
               />
+
+              <span className="errorMessage">{formErrors.startdate}</span>
             </fieldset>
             <fieldset className="form-fieldset title">
               <legend>Employee Address</legend>
-              <label>Street</label>
-              <p className="errorMessage">{formErrors.street}</p>
+              <label htmlFor="street">Street</label>
               <input
+                id="street"
                 autoComplete="off"
                 name="street"
                 type="text"
                 value={formValues.street}
                 onChange={handleChange}
               />
+              <span className="errorMessage">{formErrors.street}</span>
 
-              <label>City</label>
-              <p className="errorMessage">{formErrors.city}</p>
+              <label htmlFor="city">City </label>
               <input
+                id="city"
                 autoComplete="off"
                 name="city"
                 type="text"
                 value={formValues.city}
                 onChange={handleChange}
               />
+              <span className="errorMessage">{formErrors.city}</span>
 
-              <label>State</label>
-              <p className="errorMessage">{formErrors.countrystate}</p>
+              <label htmlFor="countrystate">
+                State
+                <Select
+                  id="countrystate"
+                  name="countrystate"
+                  options={states}
+                  placeholder="Select state"
+                  value={selectedOptionsState}
+                  onChange={handleSelectState}
+                />
+              </label>
+              <span className="errorMessage">{formErrors.countrystate}</span>
 
-              <Select
-                styles={colorStyles}
-                name="countrystate"
-                options={states}
-                placeholder="Select state"
-                value={selectedOptionsState}
-                onChange={handleSelectState}
-              />
-
-              <label>Zip Code</label>
-              <p className="errorMessage">{formErrors.zipcode}</p>
+              <label htmlFor="zipcode">Zip Code</label>
               <input
+                id="zipcode"
                 autoComplete="off"
                 name="zipcode"
                 type="text"
                 value={formValues.zipcode}
                 onChange={handleChange}
               />
+              <span className="errorMessage">{formErrors.zipcode}</span>
             </fieldset>
+
             <fieldset className="form-fieldset title">
               <legend>Departament</legend>
-              <label>Departament</label>
-              <p className="errorMessage">{formErrors.departament}</p>
-              <Select
-                name="departament"
-                options={optionListDepartament}
-                placeholder="Select departament"
-                value={selectedOptions}
-                onChange={handleSelect}
-              />
+
+              <label htmlFor="departament">
+                Departament
+                <Select
+                  id="departament"
+                  name="departament"
+                  options={optionListDepartament}
+                  placeholder="Select departament"
+                  value={selectedOptions}
+                  onChange={handleSelect}
+                />
+              </label>
+
+              <span className="errorMessage">{formErrors.departament}</span>
             </fieldset>
           </div>
 
