@@ -1,5 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { addEmployee } from "../../features/newEmploye/newEmployeeSlice";
+import Spinner from "../../components/Spinner/Spinner";
 import DatePicker from "react-datepicker";
 import moment from "moment";
 import "./form.css";
@@ -11,6 +14,12 @@ import { states } from "../../mocks_data/states";
 import { optionListDepartament } from "../../mocks_data/departament";
 
 const Form = () => {
+  // const firstnameEmploy = useSelector(
+  //   (state) => state.newEmployee.arrayEmployee
+  // );
+  // console.log(firstnameEmploy);
+  const dispatch = useDispatch();
+
   const initialValues = {
     firstname: "",
     lastname: "",
@@ -114,6 +123,8 @@ const Form = () => {
       setSelectedOptions(null);
       setSelectedDate(null);
       setSelectedDateStart(null);
+      console.log(formValues);
+      dispatch(addEmployee(formValues));
     }
   }, [formErrors]);
 
@@ -186,6 +197,10 @@ const Form = () => {
     }
     return errors;
   };
+
+  // if (isLoading) {
+  //   return <Spinner />;
+  // }
 
   return (
     <>

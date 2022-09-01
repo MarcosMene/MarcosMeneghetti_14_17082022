@@ -11,19 +11,19 @@ export const COLUMNS = [
   {
     Header: "First Name",
     Footer: "First Name",
-    accessor: "firstname",
+    accessor: "first_name",
     sticky: "left",
   },
   {
     Header: "Last Name",
     Footer: "Last Name",
-    accessor: "lastname",
+    accessor: "last_name",
     sticky: "left",
   },
   {
-    Header: "Date of Birth",
-    Footer: "Date of Birth",
-    accessor: "datebirth",
+    Header: "Start Date",
+    Footer: "Start Date",
+    accessor: "start_date",
     //to format date
     Cell: ({ value }) => {
       return format(new Date(value), "dd/MM/yyyy");
@@ -35,9 +35,9 @@ export const COLUMNS = [
     accessor: "departament",
   },
   {
-    Header: "Start Date",
-    Footer: "Start Date",
-    accessor: "startdate",
+    Header: "Date of Birth",
+    Footer: "Date of Birth",
+    accessor: "date_birth",
     //to format date
     Cell: ({ value }) => {
       return format(new Date(value), "dd/MM/yyyy");
@@ -56,7 +56,7 @@ export const COLUMNS = [
   {
     Header: "State",
     Footer: "State",
-    accessor: "countrystate",
+    accessor: "state",
   },
   {
     Header: "Zipcode",
@@ -80,17 +80,12 @@ export const GROUPED_COLUMNS = [
       {
         Header: "First Name",
         Footer: "First Name",
-        accessor: "firstname",
+        accessor: "first_name",
       },
       {
         Header: "Last Name",
         Footer: "Last Name",
-        accessor: "lastname",
-      },
-      {
-        Header: "Date of Birth",
-        Footer: "Date of Birth",
-        accessor: "datebirth",
+        accessor: "last_name",
       },
     ],
   },
@@ -102,14 +97,18 @@ export const GROUPED_COLUMNS = [
       {
         Header: "Start Date",
         Footer: "Start Date",
-        accessor: "startdate",
+        accessor: "start_date",
       },
       {
         Header: "Departament",
         Footer: "Departament",
         accessor: "departament",
       },
-
+      {
+        Header: "Date of Birth",
+        Footer: "Date of Birth",
+        accessor: "date_birth",
+      },
       {
         Header: "Street",
         Footer: "Street",
@@ -123,7 +122,7 @@ export const GROUPED_COLUMNS = [
       {
         Header: "State",
         Footer: "State",
-        accessor: "countrystate",
+        accessor: "state",
       },
       {
         Header: "Zipcode",
