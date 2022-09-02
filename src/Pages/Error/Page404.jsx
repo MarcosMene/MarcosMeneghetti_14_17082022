@@ -2,14 +2,14 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./Page404.css";
 
+/**
+ * @name NotFound
+ * @description create a page 404 if a url not found.
+ * @return {JSX.Element}
+ */
+
 const NotFound = () => {
   const navigate = useNavigate();
-
-  /**
-   * @name NotFound
-   * @description create a page 404 if a url not found.
-   * @return {JSX.Element}
-   */
 
   return (
     <main>
@@ -20,15 +20,15 @@ const NotFound = () => {
           <p className="text">
             The page you are looking for might have been removed or temporarily
             unavailable.
-            <div>
-              <button
-                className="hero-not-found-link"
-                onClick={() => navigate(-1)}
-              >
-                Go back to home
-              </button>
-            </div>
           </p>
+          <div>
+            <button
+              className="hero-not-found-link"
+              onClick={() => navigate(-1)}
+            >
+              Go back to home
+            </button>
+          </div>
         </section>
       </div>
     </main>
