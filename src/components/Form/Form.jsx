@@ -14,13 +14,13 @@ import { states } from "../../mocks_data/states";
 import { optionListDepartament } from "../../mocks_data/departament";
 
 const Form = () => {
-  // const firstnameEmploy = useSelector(
-  //   (state) => state.newEmployee.arrayEmployee
-  // );
-  // console.log(firstnameEmploy);
+  //to get the size of the total employee inside array
+  const totalEmployee = useSelector((state) => state.newEmployee.arrayEmployee);
+  // console.log(totalEmployee.length);
   const dispatch = useDispatch();
 
   const initialValues = {
+    id: "",
     firstname: "",
     lastname: "",
     datebirth: "",
@@ -117,13 +117,15 @@ const Form = () => {
     if (Object.keys(formErrors).length === 0 && isSubmit) {
       openModal();
 
+      //add 1 to form id to put inside the table
+      formValues.id = totalEmployee.length + 1;
+
       //reset all values of form
       setFormValues(initialValues);
       setSelectedOptionsState(null);
       setSelectedOptions(null);
       setSelectedDate(null);
       setSelectedDateStart(null);
-      console.log(formValues);
       dispatch(addEmployee(formValues));
     }
   }, [formErrors]);

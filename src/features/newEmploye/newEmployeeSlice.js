@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
+import MOCK_DATA from "../../mocks_data/MOCK_DATA.json";
 
 const initialState = {
-  arrayEmployee: [],
+  arrayEmployee: [...MOCK_DATA],
   // firstname: "",
   // lastname: "",
   // datebirth: "",
@@ -28,6 +29,7 @@ export const newEmployeeSlice = createSlice({
       // state.city = action.payload;
       // state.zipcode = action.payload;
       // state.departament = action.payload;
+
       state.arrayEmployee.push(action.payload);
     },
   },

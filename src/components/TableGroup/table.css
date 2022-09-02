@@ -181,10 +181,6 @@ table tr:nth-child(even) {
   background-color: rgb(235, 235, 235);
 }
 
-table tr:hover {
-  background-color: rgba(255, 198, 112, 0.2);
-}
-
 table th,
 tfoot td {
   padding-top: 12px;

@@ -7,19 +7,20 @@ import {
   useSortBy,
 } from "react-table";
 import { useSelector } from "react-redux";
-import MOCK_DATA from "./MOCK_DATA.json";
+// import MOCK_DATA from "../../mocks_data/MOCK_DATA.json";
 import { COLUMNS } from "./columns";
 import "./table.css";
 import { GlobalFilter } from "./GlobalFilter";
 import { ImArrowUp, ImArrowDown } from "react-icons/im";
 
 const BasicTable = () => {
-  // const Employees = useSelector((state) => state.newEmployee.arrayEmployee);
+  const Employees = useSelector((state) => state.newEmployee.arrayEmployee);
 
   const columns = useMemo(() => COLUMNS, []);
   // const data = useMemo(() => MOCK_DATA, []);
-  const data = useSelector((state) => state.newEmployee.arrayEmployee);
-  console.log(data);
+  const data = useMemo(() => Employees, [Employees]);
+
+  // console.log(data);
   // console.log(Employees);
   const defaultColumn = useMemo(() => {
     return {
