@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Header from "./components/Header/Header";
 import CreateEmployee from "./Pages/createEmployee/CreateEmployee";
 import EmployeList from "./Pages/employList/EmployeeList";
@@ -13,6 +13,10 @@ const App = () => {
         <Route path="/" element={<CreateEmployee />} />
         <Route path="/list" element={<EmployeList />} />
         <Route path="*" element={<Page404 />} />
+        <Route
+          path="MarcosMeneghetti_14_17082022/"
+          element={<Navigate to="/" replace />}
+        />
       </Routes>
     </BrowserRouter>
   );
