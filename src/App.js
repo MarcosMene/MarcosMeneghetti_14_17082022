@@ -13,10 +13,10 @@ const App = () => {
         <Route path="/" element={<CreateEmployee />} />
         <Route path="/list" element={<EmployeList />} />
         <Route path="*" element={<Page404 />} />
-        <Route
+        {/* <Route
           path="MarcosMeneghetti_14_17082022/"
           element={<Navigate to="/" replace />}
-        />
+        /> */}
       </Routes>
     </BrowserRouter>
   );
