@@ -8,7 +8,7 @@ import "./App.css";
 const App = () => {
   return (
     // <BrowserRouter basename="/MarcosMeneghetti_14_17082022">
-    <BrowserRouter basename="/MarcosMeneghetti_14_17082022">
+    <BrowserRouter basename="/MarcosMeneghetti_14_17082022/">
       <Header />
       <Routes>
         <Route path="/" element={<CreateEmployee />} />
