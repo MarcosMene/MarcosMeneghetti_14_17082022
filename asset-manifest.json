@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/MarcosMeneghetti_14_17082022/static/css/main.33a1277d.css",
-    "main.js": "/MarcosMeneghetti_14_17082022/static/js/main.cd17b749.js",
+    "main.js": "/MarcosMeneghetti_14_17082022/static/js/main.ec957638.js",
     "static/media/logo.png": "/MarcosMeneghetti_14_17082022/static/media/logo.591f5d2c9f48482c724e.png",
     "static/media/lost.jpg": "/MarcosMeneghetti_14_17082022/static/media/lost.9836c2fe20d072721d47.jpg",
     "index.html": "/MarcosMeneghetti_14_17082022/index.html",
     "main.33a1277d.css.map": "/MarcosMeneghetti_14_17082022/static/css/main.33a1277d.css.map",
-    "main.cd17b749.js.map": "/MarcosMeneghetti_14_17082022/static/js/main.cd17b749.js.map"
+    "main.ec957638.js.map": "/MarcosMeneghetti_14_17082022/static/js/main.ec957638.js.map"
   },
   "entrypoints": [
     "static/css/main.33a1277d.css",
-    "static/js/main.cd17b749.js"
+    "static/js/main.ec957638.js"
   ]
 }
