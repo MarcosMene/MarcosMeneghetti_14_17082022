@@ -195,4 +195,10 @@ span svg {
   margin-left: 10px;
   fill: #718231;
   font-size: 0.7rem;
+}
+
+.table-message {
+  padding: 10px;
+  width: 100%;
+  text-align: center;
 }/*# sourceMappingURL=table.css.map */

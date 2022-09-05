@@ -1,6 +1,12 @@
 import Form from "../../components/Form/Form";
 import "./CreateEmployee.css";
 
+/**
+ * @name CreateEmployee
+ * @description create page to create employee with form component
+ * @returns {JSX.Element}
+ */
+
 const CreateEmployee = () => {
   return (
     <main className="container center">

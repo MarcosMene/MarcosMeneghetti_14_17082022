@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/TableGroup/BasicTable.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/TableGroup/BasicTable.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { useMemo } from "react";
+import {
+  useTable,
+  useGlobalFilter,
+  useFilters,
+  usePagination,
+  useSortBy,
+} from "react-table";
+import { useSelector } from "react-redux";
+import { COLUMNS } from "./columns";
+import "./table.css";
+import { GlobalFilter } from "./GlobalFilter";
+import { ImArrowUp, ImArrowDown } from "react-icons/im";
+
+/**
+ * @name BasicTable
+ * @description create component table with informations about employee (id, first name, last name, date of birth, start date, street, city, state, zipcode and departament)
+ * @returns {JSX.Element}
+ */
+
+const BasicTable = () => {
+  const Employees = useSelector((state) => state.newEmployee.arrayEmployee);
+
+  const columns = useMemo(() => COLUMNS, []);
+  // const data = useMemo(() => MOCK_DATA, []);
+  const data = useMemo(() => Employees, [Employees]);
+
+  const defaultColumn = useMemo(() => {
+    return {
+      Filter: GlobalFilter,
+    };
+  }, []);
+
+  const {
+    getTableProps,
+    getTableBodyProps,
+    headerGroups,
+    footerGroups,
+    page,
+    nextPage,
+    previousPage,
+    canNextPage,
+    canPreviousPage,
+    pageOptions,
+    gotoPage,
+    pageCount,
+    setPageSize,
+    state,
+    setGlobalFilter,
+    prepareRow,
+  } = useTable(
+    {
+      columns,
+      data,
+      defaultColumn,
+      initialState: { pageIndex: 0 },
+    },
+    useFilters,
+    useGlobalFilter,
+    useSortBy,
+    usePagination
+  );
+
+  const { pageIndex, pageSize } = state;
+  const { globalFilter } = state;
+
+  return (
+    &lt;div className="searches">
+      &lt;div className="search-and-pagination">
+        &lt;div className="search">
+          &lt;GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
+          &lt;select
+            value={pageSize}
+            onChange={(e) => setPageSize(Number(e.target.value))}
+          >
+            {[10, 25, 50, 100].map((pageSize) => (
+              &lt;option key={pageSize} value={pageSize}>
+                Show {pageSize}
+              &lt;/option>
+            ))}
+          &lt;/select>
+        &lt;/div>
+        &lt;div className="pagination">
+          &lt;div className="pagination-page">
+            &lt;span>
+              Page{" "}
+              &lt;strong>
+                {pageIndex + 1} of {pageOptions.length}
+              &lt;/strong>{" "}
+            &lt;/span>
+
+            &lt;span>
+              &lt;label htmlFor="goto">Go to page: &lt;/label>
+              &lt;input
+                id="goto"
+                type="number"
+                min="1"
+                defaultValue={pageIndex + 1}
+                onChange={(e) => {
+                  const pageNumber = e.target.value
+                    ? Number(e.target.value) - 1
+                    : 0;
+                  gotoPage(pageNumber);
+                }}
+                style={{ width: "50px" }}
+              />
+            &lt;/span>
+          &lt;/div>
+          &lt;div className="buttons">
+            &lt;button onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
+              {"&lt;&lt;"}
+            &lt;/button>
+            &lt;button onClick={() => previousPage()} disabled={!canPreviousPage}>
+              Previous
+            &lt;/button>
+            &lt;button onClick={() => nextPage()} disabled={!canNextPage}>
+              Next
+            &lt;/button>
+            &lt;button
+              onClick={() => gotoPage(pageCount - 1)}
+              disabled={!canNextPage}
+            >
+              {">>"}
+            &lt;/button>
+          &lt;/div>
+        &lt;/div>
+      &lt;/div>
+
+      &lt;div className="table-group">
+        &lt;table {...getTableProps()}>
+          &lt;thead>
+            {headerGroups.map((headerGroup, index) => (
+              &lt;tr key={index} {...headerGroup.getHeaderGroupProps()}>
+                {headerGroup.headers.map((column, index) => (
+                  &lt;th
+                    key={index}
+                    {...column.getHeaderProps(column.getSortByToggleProps())}
+                  >
+                    {column.render("Header")}
+                    &lt;span>
+                      {column.isSorted ? (
+                        column.isSortedDesc ? (
+                          &lt;ImArrowUp />
+                        ) : (
+                          &lt;ImArrowDown />
+                        )
+                      ) : (
+                        ""
+                      )}
+                    &lt;/span>
+                  &lt;/th>
+                ))}
+              &lt;/tr>
+            ))}
+          &lt;/thead>
+
+          &lt;tbody {...getTableBodyProps()}>
+            {page.map((row, index) => {
+              prepareRow(row);
+              return (
+                &lt;tr key={index} {...row.getRowProps()}>
+                  {row.cells.map((cell, index) => {
+                    return (
+                      &lt;td key={index} {...cell.getCellProps()}>
+                        {cell.render("Cell")}
+                      &lt;/td>
+                    );
+                  })}
+                &lt;/tr>
+              );
+            })}
+          &lt;/tbody>
+
+          &lt;tfoot>
+            {footerGroups.map((footerGroup, index) => (
+              &lt;tr key={index} {...footerGroup.getFooterGroupProps()}>
+                {footerGroup.headers.map((column, index) => (
+                  &lt;td key={index} {...column.getFooterProps}>
+                    {column.render("Footer")}
+                  &lt;/td>
+                ))}
+              &lt;/tr>
+            ))}
+          &lt;/tfoot>
+        &lt;/table>
+        {!Employees.length &amp;&amp; (
+          &lt;div className="table-message">No data available in table&lt;/div>
+        )}
+      &lt;/div>
+    &lt;/div>
+  );
+};
+export default BasicTable;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#BasicTable">BasicTable</a></li><li><a href="global.html#CreateEmployee">CreateEmployee</a></li><li><a href="global.html#EmployeeList">EmployeeList</a></li><li><a href="global.html#Form">Form</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#NotFound">NotFound</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.11</a> on Mon Sep 05 2022 11:48:52 GMT+0200 (Central European Summer Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

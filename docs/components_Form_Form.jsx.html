@@ -1,4 +1,32 @@
-/* eslint-disable react-hooks/exhaustive-deps */
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/Form/Form.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/Form/Form.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { addEmployee } from "../../features/newEmploye/newEmployeeSlice";
@@ -111,7 +139,7 @@ const Form = () => {
   };
 
   useEffect(() => {
-    if (Object.keys(formErrors).length === 0 && isSubmit) {
+    if (Object.keys(formErrors).length === 0 &amp;&amp; isSubmit) {
       openModal();
 
       //add 1 to form id to put inside the table
@@ -134,7 +162,7 @@ const Form = () => {
     //first name
     if (!values.firstname) {
       errors.firstname = "First name is required";
-    } else if (values.firstname.length < 3) {
+    } else if (values.firstname.length &lt; 3) {
       errors.firstname = "First name must be more than 3 characters";
     } else if (values.firstname.length > 30) {
       errors.firstname = "First name must be less than 30 characters";
@@ -143,7 +171,7 @@ const Form = () => {
     //last name
     if (!values.lastname) {
       errors.lastname = "Last name is required";
-    } else if (values.lastname.length < 3) {
+    } else if (values.lastname.length &lt; 3) {
       errors.lastname = "Last name must be more than 3 characters";
     } else if (values.lastname.length > 30) {
       errors.lastname = "Last name must be less than 30 characters";
@@ -163,7 +191,7 @@ const Form = () => {
     //street
     if (!values.street) {
       errors.street = "Street is required";
-    } else if (values.street.length < 10) {
+    } else if (values.street.length &lt; 10) {
       errors.street = "Street must be more than 10 characters";
     } else if (values.street.length > 40) {
       errors.street = "Street must be less than 40 characters";
@@ -172,7 +200,7 @@ const Form = () => {
     //city
     if (!values.city) {
       errors.city = "City is required";
-    } else if (values.city.length < 5) {
+    } else if (values.city.length &lt; 5) {
       errors.city = "City must be more than 10 characters";
     } else if (values.city.length > 40) {
       errors.city = "City must be less than 40 characters";
@@ -186,7 +214,7 @@ const Form = () => {
     //zipcode
     if (!values.zipcode) {
       errors.zipcode = "Zipcode is required";
-    } else if (values.zipcode.length < 5) {
+    } else if (values.zipcode.length &lt; 5) {
       errors.zipcode = "Zipcode must be more than 4 characters";
     } else if (values.zipcode.length > 7) {
       errors.zipcode = "Zipcode must be less than 7 characters";
@@ -200,9 +228,9 @@ const Form = () => {
   };
 
   return (
-    <>
-      {Object.keys(formErrors).length === 0 && isSubmit && (
-        <Modal
+    &lt;>
+      {Object.keys(formErrors).length === 0 &amp;&amp; isSubmit &amp;&amp; (
+        &lt;Modal
           showModal={showModal}
           setShowModal={setShowModal}
           //your custom parameters here
@@ -218,14 +246,14 @@ const Form = () => {
         />
       )}
 
-      <div className="form-wrapper">
-        <form className="form-inputs" onSubmit={handleSubmit}>
-          <div className="form-fieldsets">
-            <fieldset className="form-fieldset">
-              <legend>Employee identity</legend>
+      &lt;div className="form-wrapper">
+        &lt;form className="form-inputs" onSubmit={handleSubmit}>
+          &lt;div className="form-fieldsets">
+            &lt;fieldset className="form-fieldset">
+              &lt;legend>Employee identity&lt;/legend>
 
-              <label htmlFor="firstname">First Name </label>
-              <input
+              &lt;label htmlFor="firstname">First Name &lt;/label>
+              &lt;input
                 id="firstname"
                 autoComplete="off"
                 name="firstname"
@@ -233,9 +261,9 @@ const Form = () => {
                 value={formValues.firstname}
                 onChange={handleChange}
               />
-              <span className="errorMessage">{formErrors.firstname}</span>
-              <label htmlFor="lastname">Last Name</label>
-              <input
+              &lt;span className="errorMessage">{formErrors.firstname}&lt;/span>
+              &lt;label htmlFor="lastname">Last Name&lt;/label>
+              &lt;input
                 id="lastname"
                 autoComplete="off"
                 name="lastname"
@@ -243,10 +271,10 @@ const Form = () => {
                 value={formValues.lastname}
                 onChange={handleChange}
               />
-              <span className="errorMessage">{formErrors.lastname}</span>
+              &lt;span className="errorMessage">{formErrors.lastname}&lt;/span>
 
-              <label htmlFor="datebirth">Date of Birth</label>
-              <DatePicker
+              &lt;label htmlFor="datebirth">Date of Birth&lt;/label>
+              &lt;DatePicker
                 id="datebirth"
                 name="datebirth"
                 value={selectedDate}
@@ -263,10 +291,10 @@ const Form = () => {
                 showYearDropdown
                 dropdownMode="select"
               />
-              <span className="errorMessage">{formErrors.datebirth}</span>
+              &lt;span className="errorMessage">{formErrors.datebirth}&lt;/span>
 
-              <label htmlFor="startdate">Start Date </label>
-              <DatePicker
+              &lt;label htmlFor="startdate">Start Date &lt;/label>
+              &lt;DatePicker
                 id="startdate"
                 name="startdate"
                 value={selectedDateStart}
@@ -277,7 +305,7 @@ const Form = () => {
                 maxDate={moment().add(10, "weeks")._d}
                 dateFormat="yyyy/MM/dd"
                 filterDate={(date) =>
-                  date.getDay() !== 6 && date.getDay() !== 0
+                  date.getDay() !== 6 &amp;&amp; date.getDay() !== 0
                 }
                 peekNextMonth
                 showMonthDropdown
@@ -285,13 +313,13 @@ const Form = () => {
                 todayButton="today"
               />
 
-              <span className="errorMessage">{formErrors.startdate}</span>
-            </fieldset>
-            <fieldset className="form-fieldset title">
-              <legend>Employee Address</legend>
+              &lt;span className="errorMessage">{formErrors.startdate}&lt;/span>
+            &lt;/fieldset>
+            &lt;fieldset className="form-fieldset title">
+              &lt;legend>Employee Address&lt;/legend>
 
-              <label htmlFor="street">Street</label>
-              <input
+              &lt;label htmlFor="street">Street&lt;/label>
+              &lt;input
                 id="street"
                 autoComplete="off"
                 name="street"
@@ -299,10 +327,10 @@ const Form = () => {
                 value={formValues.street}
                 onChange={handleChange}
               />
-              <span className="errorMessage">{formErrors.street}</span>
+              &lt;span className="errorMessage">{formErrors.street}&lt;/span>
 
-              <label htmlFor="city">City </label>
-              <input
+              &lt;label htmlFor="city">City &lt;/label>
+              &lt;input
                 id="city"
                 autoComplete="off"
                 name="city"
@@ -310,11 +338,11 @@ const Form = () => {
                 value={formValues.city}
                 onChange={handleChange}
               />
-              <span className="errorMessage">{formErrors.city}</span>
+              &lt;span className="errorMessage">{formErrors.city}&lt;/span>
 
-              <label htmlFor="countrystate">
+              &lt;label htmlFor="countrystate">
                 State
-                <Select
+                &lt;Select
                   id="countrystate"
                   name="countrystate"
                   options={states}
@@ -322,11 +350,11 @@ const Form = () => {
                   value={selectedOptionsState}
                   onChange={handleSelectState}
                 />
-              </label>
-              <span className="errorMessage">{formErrors.countrystate}</span>
+              &lt;/label>
+              &lt;span className="errorMessage">{formErrors.countrystate}&lt;/span>
 
-              <label htmlFor="zipcode">Zip Code</label>
-              <input
+              &lt;label htmlFor="zipcode">Zip Code&lt;/label>
+              &lt;input
                 id="zipcode"
                 autoComplete="off"
                 name="zipcode"
@@ -334,15 +362,15 @@ const Form = () => {
                 value={formValues.zipcode}
                 onChange={handleChange}
               />
-              <span className="errorMessage">{formErrors.zipcode}</span>
-            </fieldset>
+              &lt;span className="errorMessage">{formErrors.zipcode}&lt;/span>
+            &lt;/fieldset>
 
-            <fieldset className="form-fieldset title">
-              <legend>Departament</legend>
+            &lt;fieldset className="form-fieldset title">
+              &lt;legend>Departament&lt;/legend>
 
-              <label htmlFor="departament">
+              &lt;label htmlFor="departament">
                 Departament
-                <Select
+                &lt;Select
                   id="departament"
                   name="departament"
                   options={optionListDepartament}
@@ -350,15 +378,38 @@ const Form = () => {
                   value={selectedOptions}
                   onChange={handleSelect}
                 />
-              </label>
+              &lt;/label>
 
-              <span className="errorMessage">{formErrors.departament}</span>
-            </fieldset>
-          </div>
-          <button className="form-button">Save</button>
-        </form>
-      </div>
-    </>
+              &lt;span className="errorMessage">{formErrors.departament}&lt;/span>
+            &lt;/fieldset>
+          &lt;/div>
+          &lt;button className="form-button">Save&lt;/button>
+        &lt;/form>
+      &lt;/div>
+    &lt;/>
   );
 };
 export default Form;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#BasicTable">BasicTable</a></li><li><a href="global.html#CreateEmployee">CreateEmployee</a></li><li><a href="global.html#EmployeeList">EmployeeList</a></li><li><a href="global.html#Form">Form</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#NotFound">NotFound</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.11</a> on Mon Sep 05 2022 11:48:52 GMT+0200 (Central European Summer Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

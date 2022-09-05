@@ -7,11 +7,16 @@ import {
   useSortBy,
 } from "react-table";
 import { useSelector } from "react-redux";
-// import MOCK_DATA from "../../mocks_data/MOCK_DATA.json";
 import { COLUMNS } from "./columns";
 import "./table.css";
 import { GlobalFilter } from "./GlobalFilter";
 import { ImArrowUp, ImArrowDown } from "react-icons/im";
+
+/**
+ * @name BasicTable
+ * @description create component table with informations about employee (id, first name, last name, date of birth, start date, street, city, state, zipcode and departament)
+ * @returns {JSX.Element}
+ */
 
 const BasicTable = () => {
   const Employees = useSelector((state) => state.newEmployee.arrayEmployee);
@@ -20,8 +25,6 @@ const BasicTable = () => {
   // const data = useMemo(() => MOCK_DATA, []);
   const data = useMemo(() => Employees, [Employees]);
 
-  // console.log(data);
-  // console.log(Employees);
   const defaultColumn = useMemo(() => {
     return {
       Filter: GlobalFilter,
@@ -122,6 +125,7 @@ const BasicTable = () => {
           </div>
         </div>
       </div>
+
       <div className="table-group">
         <table {...getTableProps()}>
           <thead>
@@ -149,6 +153,7 @@ const BasicTable = () => {
               </tr>
             ))}
           </thead>
+
           <tbody {...getTableBodyProps()}>
             {page.map((row, index) => {
               prepareRow(row);
@@ -165,6 +170,7 @@ const BasicTable = () => {
               );
             })}
           </tbody>
+
           <tfoot>
             {footerGroups.map((footerGroup, index) => (
               <tr key={index} {...footerGroup.getFooterGroupProps()}>
@@ -177,6 +183,9 @@ const BasicTable = () => {
             ))}
           </tfoot>
         </table>
+        {!Employees.length && (
+          <div className="table-message">No data available in table</div>
+        )}
       </div>
     </div>
   );
