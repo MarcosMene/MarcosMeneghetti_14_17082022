@@ -4,9 +4,10 @@ import { useAsyncDebounce } from "react-table";
 export const GlobalFilter = ({ filter, setFilter }) => {
   const [value, setValue] = useState(filter);
 
+  //to simulate internet connection
   const onChange = useAsyncDebounce((value) => {
     setFilter(value || undefined);
-  }, 1000);
+  }, 100);
 
   return (
     <span>
