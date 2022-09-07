@@ -10,7 +10,9 @@ import { useSelector } from "react-redux";
 import { COLUMNS } from "./columns";
 import "./table.css";
 import { GlobalFilter } from "./GlobalFilter";
-import { ImArrowUp, ImArrowDown } from "react-icons/im";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
+import { faArrowDown } from "@fortawesome/free-solid-svg-icons";
 
 /**
  * @name BasicTable
@@ -140,9 +142,9 @@ const BasicTable = () => {
                     <span>
                       {column.isSorted ? (
                         column.isSortedDesc ? (
-                          <ImArrowUp />
+                          <FontAwesomeIcon icon={faArrowUp} />
                         ) : (
-                          <ImArrowDown />
+                          <FontAwesomeIcon icon={faArrowDown} />
                         )
                       ) : (
                         ""

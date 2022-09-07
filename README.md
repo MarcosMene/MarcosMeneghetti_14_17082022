@@ -1,70 +1,123 @@
-# Getting Started with Create React App
+  <img src='./src/assets/image/logo.png'>  
+  
+## Projet 14 - Wealth Health - HRNet - OpenClassrooms
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Wealth Health is a a large financial company.This company uses an internal web application, called HRnet, which manages employee registration.
 
-## Available Scripts
+##### Project realized by Marcos Meneghetti
 
-In the project directory, you can run:
+---
 
-### `npm start`
+### Dependencies
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- React: (v 18.2.0)
+- React-dom: (v 18.2.0)
+- React-router-dom: (v 6.3.0)
+- jsdoc: (v 3.6.11)
+- redux: (v 4.2.0)
+- redux/toolkit: (v 1.8.5)
+- react-fontawesome: (v 0.2.0)
+- date-fns: (v 2.29.2)
+- modal_mm: (v 0.1.12)
+- moment: (v 2.29.4)
+- react-select: (v 5.4.0)
+- react-table: (v 7.8.0)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+### I have used
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![Language - JS](https://img.shields.io/static/v1?label=Language&message=JS&color=red&style=for-the-badge&logo=javascript) ![Framework - React](https://img.shields.io/static/v1?label=Framework&message=React&color=green&style=for-the-badge&logo=react) ![Code Editor - VS Studio Code](https://img.shields.io/static/v1?label=Code+Editor&message=VS+Studio+Code&color=yellow&style=for-the-badge&logo=Visual+Studio+Code) ![Node - V16.15.0](https://img.shields.io/static/v1?label=Node&message=V16.15.0&color=brown&style=for-the-badge&logo=Node) ![API documentation - JSDoc](https://img.shields.io/static/v1?label=API+documentation&message=JSDoc&color=pink&style=for-the-badge)
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Project goal
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Convert the entire HRNet JQuery project to React.
+- Convert one of the four current JQuery plugins to React and publish it at npm or github.
+- Perform Lighthouse test to compare the JQuery and React projects.
+- Make a new version of the "Create Employee" and "Employee List" pages with React.
+- Add a state management system (the JQuery project uses local storage)
+- Make sure that everything is consistent in terms of style.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+### List of currently used jQuery plugins that need to be converted
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- [datetimepicker](https://github.com/xdan/datetimepicker)
+- [Modal window plugin - jQuery.modal.js](https://github.com/kylefox/jquery-modal)
+- [Drop-down menus](https://github.com/jquery/jquery-ui/blob/main/ui/widgets/selectmenu.js)
+- [Plugin for data tables](https://github.com/DataTables/DataTables)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Performance testing
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+To measure quantifiable data (e.g. page load times, network calls) to ensure that converting the app to React actually improves performance comparing to JQuery page, we will use [Lighthouse](https://chrome.google.com/webstore/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk?hl=en#:~:text=Lighthouse%20is%20an%20open%2Dsource,how%20well%20the%20page%20did.) from Chrome.
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### My plugin React.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+I have chosen the modal plugin. You can see all the instructions [here](https://www.npmjs.com/package/modal_mm) to install my plugin.
+Here some examples of my modal.
+<img src='./src/assets/image/modalexamples.png'>
 
-### Code Splitting
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### How to work with Wealth Realth-HRNet React project
 
-### Analyzing the Bundle Size
+- Clone this reposity:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```
+git clone https://github.com/MarcosMene/MarcosMeneghetti_14_17082022.git
+```
 
-### Making a Progressive Web App
+- Change the directory to:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```
+cd MarcosMeneghetti_14_17082022
+```
 
-### Advanced Configuration
+- Install dependencies:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```
+npm install
+```
 
-### Deployment
+5 - Start the application:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+```
+npm start
+```
 
-### `npm run build` fails to minify
+The application will be rendered at URL `http://localhost:3000`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
+
+### Build version of React project
+
+To use Lighthouse with React project, you need to use the build version, otherwise the result of the performance will not be good.
+
+- Create new terminal on VSCode.
+
+```
+npm run build
+```
+
+This will create a folder called **build** inside the project. When the installation is finished, write this command in the terminal:
+
+```
+serve -s build
+```
+
+You will see a message
+
+```
+local http://localhost:3000
+On your Network: http://192.168.1.13:3000.
+```
+
+Left-click + ctrl key over localhost:3000 on the screen. It will open the project in a new browser window.
+
+_If you have already open your project on localhost:3000, you will receive another address for your Local._
