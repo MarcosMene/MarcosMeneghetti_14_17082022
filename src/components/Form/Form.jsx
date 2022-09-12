@@ -289,7 +289,6 @@ const Form = () => {
             </fieldset>
             <fieldset className="form-fieldset title">
               <legend>Employee Address</legend>
-
               <label htmlFor="street">Street</label>
               <input
                 id="street"
@@ -300,7 +299,6 @@ const Form = () => {
                 onChange={handleChange}
               />
               <span className="errorMessage">{formErrors.street}</span>
-
               <label htmlFor="city">City </label>
               <input
                 id="city"
@@ -311,7 +309,6 @@ const Form = () => {
                 onChange={handleChange}
               />
               <span className="errorMessage">{formErrors.city}</span>
-
               <label htmlFor="countrystate">
                 State
                 <Select
@@ -324,13 +321,12 @@ const Form = () => {
                 />
               </label>
               <span className="errorMessage">{formErrors.countrystate}</span>
-
               <label htmlFor="zipcode">Zip Code</label>
               <input
                 id="zipcode"
                 autoComplete="off"
                 name="zipcode"
-                type="text"
+                type="number"
                 value={formValues.zipcode}
                 onChange={handleChange}
               />
@@ -339,7 +335,6 @@ const Form = () => {
 
             <fieldset className="form-fieldset title">
               <legend>Departament</legend>
-
               <label htmlFor="departament">
                 Departament
                 <Select
@@ -351,7 +346,6 @@ const Form = () => {
                   onChange={handleSelect}
                 />
               </label>
-
               <span className="errorMessage">{formErrors.departament}</span>
             </fieldset>
           </div>
